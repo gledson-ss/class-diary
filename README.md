@@ -1,8 +1,8 @@
-# Exam_POO
+# Exam POO
 
 ![testImage](https://user-images.githubusercontent.com/43425195/69241613-e5a78500-0b7d-11ea-8833-23c3d9b69ddb.png)
 
-# Class_diary
+# Class Diary
 
 *Deseja-se um sistema em Java que controle uma caderneta/diário de notas de uma disciplina. O
 sistema deverá ser capaz de registrar os nomes, matrículas e notas de vários alunos, calcular
