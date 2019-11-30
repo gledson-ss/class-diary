@@ -19,7 +19,7 @@ public class Usa_diario {
         Scanner input = new Scanner(System.in);
         int quantidade;
         System.out.print("Nome da Disciplina: ");
-        d.setNome(input.next());
+        d.setNome(input.nextLine());
 
         System.out.print("Quantidade da Carga Horária da Disciplina de "+d.getNome() + ": ");
         d.setCarga_horaria(input.nextInt());

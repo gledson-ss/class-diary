@@ -49,7 +49,7 @@ public class Disciplina {
     public void cadastraAlunos(Aluno a){
         Scanner input = new Scanner(System.in);
         System.out.print("Nome: ");
-        a.setNome(input.next());
+        a.setNome(input.nextLine());
         System.out.print("Matricula: ");
         a.setMatricula(input.next());
         System.out.print("Quantidade de faltas: ");
