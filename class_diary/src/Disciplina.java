@@ -7,8 +7,11 @@ public class Disciplina {
 
     public Disciplina(){}
 
-    public Disciplina(String nome, int carga_horaria){
+    public Disciplina(String nome, int carga_horaria) throws CargaHorariaException, TamanhoNomeException {
         this.nome = nome;
+        if(nome.length() > 40){
+            throw new TamanhoNomeException();
+        }
         this.carga_horaria = carga_horaria;
         if(carga_horaria == 30){
             VA = 2;
@@ -18,6 +21,9 @@ public class Disciplina {
         }
         else if(carga_horaria >= 60){
             VA = 4;
+        }
+        else{
+            throw new CargaHorariaException(); //tratando ocerrencias de numeros invalidos
         }
     }
 
@@ -29,7 +35,7 @@ public class Disciplina {
         return nome;
     }
 
-    public void setCarga_horaria(int carga_horaria) {
+    public void setCarga_horaria(int carga_horaria) throws CargaHorariaException {
         this.carga_horaria = carga_horaria;
         if(carga_horaria == 30){
             VA = 2;
@@ -40,15 +46,21 @@ public class Disciplina {
         else if(carga_horaria >= 60){
             VA = 4;
         }
+        else{
+            throw new CargaHorariaException(); //tratando ocorrencias de numeros invalidos
+        }
     }
 
     public int getCarga_horaria() {
         return carga_horaria;
     }
 
-    public void cadastraAlunos(Aluno a){
+    public void cadastraAlunos(Aluno a) throws TamanhoNomeException {
         Scanner input = new Scanner(System.in);
         System.out.print("Nome: ");
+        if(nome.length() > 40){
+            throw new TamanhoNomeException();
+        }
         a.setNome(input.nextLine());
         System.out.print("Matricula: ");
         a.setMatricula(input.next());
@@ -61,7 +73,7 @@ public class Disciplina {
         lista_alunos.add(a);
     }
 
-    public void addAlunos(int quantidade){
+    public void addAlunos(int quantidade) throws TamanhoNomeException {
 
         System.out.println("Digite "+quantidade+" aluno(s)");
         for(int i = 0; i < quantidade; i++){

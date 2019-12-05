@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Usa_diario {
-    public static void main(String []args){
+    public static void main(String []args) throws TamanhoNomeException, CargaHorariaException {
 
         Disciplina d = new Disciplina();
 
@@ -15,7 +15,7 @@ public class Usa_diario {
 
     }
 
-    public static void cadastrarDisciplina(Disciplina d){
+    public static void cadastrarDisciplina(Disciplina d) throws CargaHorariaException, TamanhoNomeException {
         Scanner input = new Scanner(System.in);
         int quantidade;
         System.out.print("Nome da Disciplina: ");
