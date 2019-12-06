@@ -143,24 +143,31 @@ public class Aluno {
 	@Override
 	public String toString() {
 		String resp = null;
-		resp = "Nome: " + nome + " | Matricula: " + matricula + " | Media parcial: " + media_parcial;
-		if(isReprovadoPorfalta()){
-			resp += " | Aluno(a) reprovado(a) por falta";
+		resp = "Nome: " + nome + " | Matricula: " + matricula + " | Media parcial: " + media_parcial + " | Quantidade de faltas: " + getQuantidade_falta() +"\n";
+		resp += "Notas de avaliação: ";
+		for(int i = 0; i < notas.size(); i++){
+			resp += notas.get(i);
+			if(i != notas.size()-1)resp += " | ";
 		}
-		else if(isAprovado()){
-			resp += " | Aluno(a) aprovado(a)!";
+		resp += "\n";
+		if(isReprovadoPorfalta()){
+			resp += "Aluno(a) reprovado(a) por falta";
 		}
 		else if(isFoiFinal()){
-			resp += " | Nota na atividade final: "+getAvaliacao_final() + " | Media final: " + getMedia_avaliacaFinal();
+			resp += "Nota na atividade final: "+getAvaliacao_final() + " | Media final: " + getMedia_avaliacaFinal() + "\n";
 			if(isAprovado()){
-				resp += " | Aluno(a) aprovado(a)!";
+				resp += "Aluno(a) aprovado(a)!";
 			}
 			else{
-				resp += " | Aluno(a) reprovado(a)!";
+				resp += "Aluno(a) reprovado(a)!";
 			}
 		}
+		else if(isAprovado()){
+			resp += "Aluno(a) aprovado(a)!";
+		}
+
 		else if(!isAprovado()){
-			resp += " | Aluno(a) reprovado(a)!";
+			resp += "Aluno(a) reprovado(a)!";
 		}
 
 		return resp;

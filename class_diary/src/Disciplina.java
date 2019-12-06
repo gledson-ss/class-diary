@@ -5,9 +5,9 @@ public class Disciplina {
     private int carga_horaria, VA;
     private ArrayList<Aluno> lista_alunos = new ArrayList<>();
 
-    public Disciplina(){}
+    public void Disciplina(){}
 
-    public Disciplina(String nome, int carga_horaria) throws CargaHorariaException, TamanhoNomeException {
+    public void Disciplina(String nome, int carga_horaria) throws CargaHorariaException, TamanhoNomeException {
         this.nome = nome;
         if(nome.length() > 40){
             throw new TamanhoNomeException();
