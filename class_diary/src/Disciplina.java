@@ -55,21 +55,34 @@ public class Disciplina {
         return carga_horaria;
     }
 
-    public void cadastraAlunos(Aluno a) throws TamanhoNomeException {
+    public void cadastraAlunos(Aluno a) throws TamanhoNomeException, MatriculaExistenteException {
+
         Scanner input = new Scanner(System.in);
         System.out.print("Nome: ");
+
         if(nome.length() > 40){
             throw new TamanhoNomeException();
         }
+
         a.setNome(input.nextLine());
         System.out.print("Matricula: ");
-        a.setMatricula(input.next());
+        String mat = input.next();
+
+        for(Aluno al : lista_alunos){ // verificando se há matricula repetida
+            if(al.getMatricula().compareTo(mat) == 0){
+                throw new MatriculaExistenteException();
+            }
+        }
+
+        a.setMatricula(mat);
         System.out.print("Quantidade de faltas: ");
         a.setQuantidade_falta(input.nextInt());
         for(int i = 0; i < VA; i++){
             System.out.print("Digite a nota da "+(i+1)+" avaliacao: ");
             a.setNota(input.nextFloat());
         }
+
+
         lista_alunos.add(a);
     }
 
@@ -80,11 +93,13 @@ public class Disciplina {
             int n = i + 1;
             System.out.println("Aluno " + n);
             Aluno a = new Aluno();
-            cadastraAlunos(a);
+            try{
+                cadastraAlunos(a);
+            }catch (MatriculaExistenteException m){
+                m.printStackTrace();
+            }
+
         }
-    }
-    public void consultarAluno(Aluno a){
-        System.out.println("a media do aluno "+ a.getNome() +" é :" + a.calculaMedia(VA));
     }
 
     public ArrayList<Aluno> getLista_alunos() {
