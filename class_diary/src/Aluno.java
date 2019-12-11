@@ -17,6 +17,7 @@ public class Aluno {
 		this.reprovadoPorfalta = reprovadoPorfalta;
 	}
 
+	//init aluno
 	public Aluno(){
 		media_parcial = -1;
 		media_final = -1;
@@ -26,7 +27,7 @@ public class Aluno {
 		aprovado = false;
 		reprovadoPorfalta = false;
 	}
-
+	//overload
 	public Aluno(String nome, String matricula) {
 		this.nome = nome;
 		this.matricula = matricula;
